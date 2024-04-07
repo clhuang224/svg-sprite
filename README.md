@@ -11,5 +11,5 @@ Password: <PERSONAL ACCESS TOKEN>
 
 安裝
 ```
-pnpm add -D github:clhuang224/vite-plugin-svg-sprite
+pnpm add -D @clhuang224/vite-plugin-svg-sprite
 ```
