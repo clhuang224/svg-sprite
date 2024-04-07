@@ -1,4 +1,4 @@
-import { Plugin } from 'vite'
+import { PluginOption } from 'vite'
 import svgSpriter from 'svg-sprite'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -7,7 +7,7 @@ import { globSync } from 'glob'
 const VIRTUAL_ID = 'virtual:svg-sprite'
 const RESOLVED_ID = `\0${VIRTUAL_ID}`
 
-export default (options: { sourceDir: string, fileName: string }): Plugin => {
+export default (options: { sourceDir: string, fileName: string }): PluginOption => {
     return {
         name: 'svg-sprite',
         resolveId(id) {
@@ -17,7 +17,7 @@ export default (options: { sourceDir: string, fileName: string }): Plugin => {
         },
         load(id) {
             if (id === RESOLVED_ID) {
-                return './assets/svg-sprite.svg'
+                return `./assets/${options.fileName}`
             }
         },
         generateBundle() {
@@ -34,7 +34,7 @@ export default (options: { sourceDir: string, fileName: string }): Plugin => {
                 }
                 this.emitFile({
                     type: 'asset',
-                    fileName: 'svg-sprite.svg',
+                    fileName: options.fileName,
                     source: result.contents
                 })
             })
