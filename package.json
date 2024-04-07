@@ -17,16 +17,20 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "unbuild"
   },
   "devDependencies": {
+    "@types/svg-sprite": "^0.0.39",
     "typescript": "^5.4.4",
     "unbuild": "^2.0.0"
   },
   "dependencies": {
-    "svgo": "^3.2.0",
+    "glob": "^10.3.12",
+    "svg-sprite": "^2.0.4",
     "vite": "^5.2.8"
   }
 }
